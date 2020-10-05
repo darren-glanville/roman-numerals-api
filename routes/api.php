@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\NumeralsController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// convert
+Route::get('/numerals/add/{id}', [NumeralsController::class, 'convertInteger']);
+
+// list all
+Route::get('/numerals', [NumeralsController::class, 'listAll']);
+
+// list top 10
+Route::get('/numerals/top10', [NumeralsController::class, 'listTop10']);
